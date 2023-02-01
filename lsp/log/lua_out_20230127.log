@@ -1,0 +1,365 @@
+[Trace - 05:36:21 PM] Sending request 'initialize - (1)'
+Params: {
+  "processId": null,
+  "rootUri": "file:///Users/frityet/Documents/OkBot/",
+  "capabilities": {
+    "workspace": {
+      "applyEdit": true,
+      "workspaceEdit": {
+        "documentChanges": true
+      },
+      "didChangeConfiguration": {},
+      "didChangeWatchedFiles": {
+        "dynamicRegistration": true
+      },
+      "symbol": {},
+      "executeCommand": {},
+      "workspaceFolders": false,
+      "configuration": true
+    },
+    "textDocument": {
+      "synchronization": {
+        "willSave": true,
+        "willSaveWaitUntil": true,
+        "didSave": true
+      },
+      "completion": {
+        "completionItem": {
+          "snippetSupport": true
+        }
+      },
+      "hover": {},
+      "signatureHelp": {},
+      "references": {},
+      "documentHighlight": {},
+      "formatting": {},
+      "rangeFormatting": {},
+      "onTypeFormatting": {},
+      "definition": {},
+      "codeAction": {},
+      "rename": {
+        "prepareSupport": true,
+        "dynamicRegistration": false
+      },
+      "semanticHighlightingCapabilities": {
+        "semanticHighlighting": false
+      }
+    }
+  }
+}
+
+
+[Trace - 05:36:21 PM] Received notification 'window/logMessage'
+Params: {
+  "type": 4,
+  "message": "Log path: file:///usr/local/Cellar/lua-language-server/3.6.6/libexec/log/file_Users_frityet_Documents_OkBot_.log"
+}
+
+
+[Trace - 05:36:21 PM] Received response 'initialize - (1)' in 84ms
+Result: {
+  "capabilities": {
+    "textDocumentSync": {
+      "openClose": true,
+      "change": 2,
+      "save": {
+        "includeText": false
+      }
+    },
+    "hoverProvider": true,
+    "completionProvider": {
+      "resolveProvider": true,
+      "triggerCharacters": [
+        "\t",
+        "\n",
+        ".",
+        ":",
+        "(",
+        "\u0027",
+        "\"",
+        "[",
+        ",",
+        "#",
+        "*",
+        "@",
+        "|",
+        "\u003d",
+        "-",
+        "{",
+        " ",
+        "+",
+        "?"
+      ]
+    },
+    "signatureHelpProvider": {
+      "triggerCharacters": [
+        "(",
+        ","
+      ]
+    },
+    "definitionProvider": true,
+    "typeDefinitionProvider": true,
+    "referencesProvider": true,
+    "documentHighlightProvider": true,
+    "documentSymbolProvider": true,
+    "workspaceSymbolProvider": true,
+    "codeActionProvider": {
+      "codeActionKinds": [
+        "",
+        "quickfix",
+        "refactor.rewrite",
+        "refactor.extract"
+      ]
+    },
+    "codeLensProvider": {
+      "resolveProvider": true
+    },
+    "documentFormattingProvider": true,
+    "documentRangeFormattingProvider": true,
+    "documentOnTypeFormattingProvider": {
+      "firstTriggerCharacter": "\n"
+    },
+    "renameProvider": {
+      "prepareProvider": true
+    },
+    "colorProvider": true,
+    "foldingRangeProvider": true,
+    "executeCommandProvider": {
+      "commands": [
+        "lua.removeSpace",
+        "lua.solve",
+        "lua.jsonToLua",
+        "lua.setConfig",
+        "lua.autoRequire"
+      ]
+    },
+    "workspace": {
+      "workspaceFolders": {
+        "supported": true,
+        "changeNotifications": true
+      }
+    }
+  }
+}
+
+
+[Trace - 05:36:21 PM] Sending notification 'initialized'
+Params: {}
+
+
+[Trace - 05:36:21 PM] Received notification '$/status/report'
+Params: {
+  "text": "😺Lua",
+  "tooltip": "Workspace   : /Users/frityet/Documents/OkBot/\nCached files: 0/0\nMemory usage: 2M"
+}
+
+
+[Trace - 05:36:21 PM] Sending notification 'textDocument/didOpen'
+Params: {
+  "textDocument": {
+    "uri": "file:///Users/frityet/Documents/OkBot/t.lua",
+    "languageId": "lua",
+    "version": 0,
+    "text": "local robot \u003d require(\"robot\")\n\nrobot:drive {\n    direction \u003d \"forwards\",\n    duration \u003d sec(10)\n}\n"
+  }
+}
+
+
+[Trace - 05:36:21 PM] Received request 'workspace/configuration - (1)'
+Params: {
+  "items": [
+    {
+      "scopeUri": "file:///Users/frityet/Documents/OkBot/",
+      "section": "Lua"
+    },
+    {
+      "scopeUri": "file:///Users/frityet/Documents/OkBot/",
+      "section": "files.associations"
+    },
+    {
+      "scopeUri": "file:///Users/frityet/Documents/OkBot/",
+      "section": "files.exclude"
+    },
+    {
+      "scopeUri": "file:///Users/frityet/Documents/OkBot/",
+      "section": "editor.semanticHighlighting.enabled"
+    },
+    {
+      "scopeUri": "file:///Users/frityet/Documents/OkBot/",
+      "section": "editor.acceptSuggestionOnEnter"
+    }
+  ]
+}
+
+
+[Trace - 05:36:21 PM] Sending response 'workspace/configuration - (1)'. Processing request took 10ms
+Result: [
+  {},
+  {},
+  {},
+  {},
+  {}
+]
+
+
+[Trace - 05:36:21 PM] Received request 'workspace/configuration - (2)'
+Params: {
+  "items": [
+    {
+      "section": "Lua"
+    },
+    {
+      "section": "files.associations"
+    },
+    {
+      "section": "files.exclude"
+    },
+    {
+      "section": "editor.semanticHighlighting.enabled"
+    },
+    {
+      "section": "editor.acceptSuggestionOnEnter"
+    }
+  ]
+}
+
+
+[Trace - 05:36:21 PM] Sending response 'workspace/configuration - (2)'. Processing request took 0ms
+Result: [
+  {},
+  {},
+  {},
+  {},
+  {}
+]
+
+
+[Trace - 05:36:22 PM] Received notification '$/status/show'
+Params: null
+
+
+[Trace - 05:36:22 PM] Sending request 'textDocument/hover - (2)'
+Params: {
+  "textDocument": {
+    "uri": "file:///Users/frityet/Documents/OkBot/t.lua"
+  },
+  "position": {
+    "line": 3,
+    "character": 27
+  }
+}
+
+
+[Trace - 05:36:22 PM] Received notification '$/status/report'
+Params: {
+  "text": "😺Lua",
+  "tooltip": "Workspace   : /Users/frityet/Documents/OkBot/\nCached files: 0/1\nMemory usage: 2M"
+}
+
+
+[Trace - 05:36:22 PM] Received notification '$/status/show'
+Params: null
+
+
+[Trace - 05:36:22 PM] Received response 'textDocument/hover - (2)' in 25ms
+Result: {
+  "contents": {
+    "kind": "markdown",
+    "value": "Workspace loading: 0 / 0"
+  }
+}
+
+
+[Trace - 05:36:22 PM] Sending request 'textDocument/documentHighlight - (3)'
+Params: {
+  "textDocument": {
+    "uri": "file:///Users/frityet/Documents/OkBot/t.lua"
+  },
+  "position": {
+    "line": 3,
+    "character": 27
+  }
+}
+
+
+[Trace - 05:36:22 PM] Received request 'workspace/diagnostic/refresh - (3)'
+Params: null
+
+
+[Trace - 05:36:22 PM] Sending response 'workspace/diagnostic/refresh - (3)'. Processing request took 1ms
+Result: null
+
+
+[Trace - 05:36:22 PM] Received request 'workspace/diagnostic/refresh - (4)'
+Params: null
+
+
+[Trace - 05:36:22 PM] Sending response 'workspace/diagnostic/refresh - (4)'. Processing request took 1ms
+Result: null
+
+
+[Trace - 05:36:22 PM] Received notification '$/status/report'
+Params: {
+  "text": "😺Lua",
+  "tooltip": "Workspace   : /Users/frityet/Documents/OkBot/\nCached files: 12/12\nMemory usage: 7M"
+}
+
+
+[Trace - 05:36:22 PM] Received response 'textDocument/documentHighlight - (3)' in 535ms
+Result: null
+
+
+[Trace - 05:36:22 PM] Received notification 'textDocument/publishDiagnostics'
+Params: {
+  "uri": "file:///Users/frityet/Documents/OkBot/t.lua",
+  "diagnostics": [
+    {
+      "range": {
+        "start": {
+          "line": 4,
+          "character": 15
+        },
+        "end": {
+          "line": 4,
+          "character": 18
+        }
+      },
+      "severity": 2,
+      "code": "undefined-global",
+      "source": "Lua Diagnostics.",
+      "message": "Undefined global `sec`."
+    }
+  ]
+}
+
+
+[Trace - 05:36:22 PM] Received notification '$/status/report'
+Params: {
+  "text": "😺Lua",
+  "tooltip": "Workspace   : /Users/frityet/Documents/OkBot/\nCached files: 12/12\nMemory usage: 5M"
+}
+
+
+[Trace - 05:36:23 PM] Received notification '$/status/report'
+Params: {
+  "text": "😺Lua",
+  "tooltip": "Workspace   : /Users/frityet/Documents/OkBot/\nCached files: 12/12\nMemory usage: 6M"
+}
+
+
+[Trace - 05:36:24 PM] Sending request 'shutdown - (4)'
+Params: null
+
+
+[Trace - 05:36:24 PM] Sending notification 'textDocument/didClose'
+Params: {
+  "textDocument": {
+    "uri": "file:///Users/frityet/Documents/OkBot/t.lua"
+  }
+}
+
+
+[Trace - 05:36:24 PM] Received response 'shutdown - (4)' in 84ms
+Result: true
+
+
