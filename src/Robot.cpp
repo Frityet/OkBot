@@ -15,7 +15,7 @@ Robot::Robot():
                     { PORTS.left_motors[0], PORTS.left_motors[1], PORTS.left_motors[2] },
                     { PORTS.right_motors[0], PORTS.right_motors[1], PORTS.right_motors[2] }
                 )
-                .withDimensions(AbstractMotor::gearset::green, {
+                .withDimensions(AbstractMotor::gearset::blue, {
                     { 2.75_in, 14_in },
                     imev5GreenTPR
                 })
