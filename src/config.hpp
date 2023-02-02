@@ -45,3 +45,17 @@ static const constexpr struct {
     },
     .pneumatics = ControllerDigital::A
 };
+
+template<typename T>
+struct Range {
+    T minimum = 0, maximum = 0;
+};
+
+template<typename T>
+using Range_t = Range<T>;
+
+static const constexpr struct {
+    Range_t<int32_t> vision_epsilon;
+} SETTINGS = {
+    .vision_epsilon = { -10, 10 }
+};

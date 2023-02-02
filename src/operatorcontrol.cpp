@@ -16,7 +16,9 @@
         _drive->arcade(_controller.getAnalog(ControllerAnalog::leftY), _controller.getAnalog(ControllerAnalog::rightX));
 
         _intake.moveVoltage(_controller[CONTROLS.intake.in].isPressed() ? -12000
-                                                                        : _controller[CONTROLS.intake.out].isPressed() ? 12000 : 0);
+                                                                               : _controller[CONTROLS.intake.out].isPressed()
+                                                                                    ? 12000
+                                                                                    : 0);
 
         for (auto launcher_cfg : CONTROLS.launcher) {
             if (((int)launcher_cfg.button) == 0) continue;

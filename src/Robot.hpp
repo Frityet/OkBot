@@ -43,7 +43,10 @@ class Robot final {
     void    stop_launcher(), stop_intake(), reset_pneumatics();
 
     void    drive(QLength distance),
-            turn(QAngle angle);
+            turn(QAngle angle),
+            shoot(int16_t power = 12000);
+
+    struct pros::vision_object get_biggest_object();
 
     private:
         std::shared_ptr<class ChassisController>_chassis;

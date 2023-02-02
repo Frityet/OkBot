@@ -17,7 +17,7 @@ Robot::Robot():
                 )
                 .withDimensions(AbstractMotor::gearset::blue, {
                     { 2.75_in, 14_in },
-                    imev5GreenTPR
+                    imev5BlueTPR
                 })
                 .build()),
     _drive(_chassis->getModel()),
@@ -60,3 +60,23 @@ void Robot::drive(QLength distance)
 
 void Robot::turn(QAngle angle)
 { _chassis->turnAngle(angle); }
+
+void Robot::shoot(int16_t power)
+{
+    rev_launcher(power);
+    rev_intake(power);
+    pros::delay(1_secs);
+    stop_launcher();
+    stop_intake();
+}
+
+struct pros::vision_object Robot::get_biggest_object()
+{
+    struct pros::vision_object biggest = {0};
+    for (int i = 0; i < _vision.get_object_count(); i++) {
+        struct pros::vision_object obj = _vision.get_by_size(i);
+        if (obj.width * obj.height > biggest.width * biggest.height)
+            biggest = obj;
+    }
+    return biggest;
+}
