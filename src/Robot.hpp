@@ -34,15 +34,15 @@ class Robot final {
 
         Robot();
 
-    [[noreturn]] void operator_control(), autonomous();
+    [[noreturn]] void operator_control(), autonomous(), roller_autonomous();
 
-    void    rev_launcher(int16_t power = 12000, Time_t duration = 1_secs),
-            rev_intake(int16_t power = 12000, Time_t duration = 1_secs),
+    void    rev_launcher(int16_t power = 8000, Time_t duration = 4_secs),
+            rev_intake(int16_t power = 12000, Time_t duration = 0.5_secs),
             set_pneumatics(int16_t val);
 
     void    stop_launcher(), stop_intake(), reset_pneumatics();
 
-    void    drive(QLength distance),
+    void    drive(QLength distance, double velocity = 600),
             turn(QAngle angle),
             shoot(int16_t power = 12000);
 

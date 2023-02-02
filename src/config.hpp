@@ -20,7 +20,8 @@ static const constexpr struct {
     .right_motors = {3, 5, 11  },
     .intake = -10,
     .launcher = -9,
-    .pneumatics = 'A'
+    .vision = 14,
+    .pneumatics = 'A',
 };
 
 static const constexpr struct {
@@ -57,5 +58,5 @@ using Range_t = Range<T>;
 static const constexpr struct {
     Range_t<int32_t> vision_epsilon;
 } SETTINGS = {
-    .vision_epsilon = { -10, 10 }
+    .vision_epsilon = { -50, 50 }
 };
