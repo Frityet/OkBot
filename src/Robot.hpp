@@ -38,9 +38,9 @@ class Robot final {
 
     void    rev_launcher(int16_t power = 8000, Time_t duration = 4_secs),
             rev_intake(int16_t power = 12000, Time_t duration = 0.5_secs),
-            set_pneumatics(int16_t val);
+            activate_blooper(), activate_string_launcher();
 
-    void    stop_launcher(), stop_intake(), reset_pneumatics();
+    void    stop_launcher(), stop_intake(), reset_blooper(), reset_string_launcher();
 
     void    drive(QLength distance, double velocity = 600),
             turn(QAngle angle),
@@ -53,6 +53,6 @@ class Robot final {
         std::shared_ptr<class ChassisModel>     _drive;
         class Controller                        _controller;
         class Motor                             _intake, _launcher;
-        class pros::ADIAnalogOut                _pneumatics;
+        class pros::ADIAnalogOut                _blooper, _string_launcher[2];
         class pros::Vision                      _vision;
 };

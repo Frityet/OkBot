@@ -49,12 +49,10 @@ static void vision_check(class Robot *robot, int red_id, int blue_id)
 
     std::printf("Found object: %s\n", obj.signature == red_id ? "red" : "blue");
     std::printf("Middle: %d\n", obj.x_middle_coord);
-    //Re-align the robot to point at the object
-    //Then shoot
-    //First, rotate the robot to face the object
+
     while (obj.x_middle_coord > SETTINGS.vision_epsilon.maximum or obj.x_middle_coord < SETTINGS.vision_epsilon.minimum) {
         std::printf("Turning\n");
-        robot->turn(obj.x_middle_coord < SETTINGS.vision_epsilon.maximum ? 5_deg : -5_deg);
+        robot->turn(obj.x_middle_coord < SETTINGS.vision_epsilon.maximum ? 7.5_deg : -7.5_deg);
         obj = robot->get_biggest_object();
         std::printf("mid: %d\n", obj.x_middle_coord);
     }
@@ -79,28 +77,27 @@ void Robot::autonomous()
     _vision.set_zero_point(pros::E_VISION_ZERO_CENTER);
     _vision.set_signature(RED_ID, &red_vis);
     _vision.set_signature(BLUE_ID, &blue_vis);
-
-    rev_intake(12000, 1_secs);
+    rev_launcher(12000, 1_secs);
+    rev_intake(12000, 0.25_secs);
     drive(FIELD_SIZE / 3 - 40_cm, 300);
-    pros::delay(2.5_secs);
     turn(20_deg);
     vision_check(this, RED_ID, BLUE_ID);
-//    shoot(10500);
 
     turn(-(45_deg + 10_deg));
 
-    rev_intake(12000, 2_secs);
+    rev_intake(12000, 0_secs);
     drive(1_m, 300);
-    pros::delay(2_secs);
     stop_intake();
 
-    turn(60_deg);
+    turn(75_deg);
 
     vision_check(this, RED_ID, BLUE_ID);
-//    shoot(11000);
+    stop_launcher();
 
-    turn(-45_deg);
-    drive(-(FIELD_SIZE / 3), 600);
+    turn(-(45_deg + 20_deg + 10_deg));
+    drive(-(FIELD_SIZE / 3) - 10_in, 600);
+
+    rev_intake(12000, 0.25_secs);
 
     while (true) pros::delay(100);
 }

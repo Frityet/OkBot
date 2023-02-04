@@ -13,7 +13,7 @@
 [[noreturn]] void Robot::operator_control()
 {
     while (true) {
-        _drive->arcade(_controller.getAnalog(ControllerAnalog::leftY), _controller.getAnalog(ControllerAnalog::rightX));
+        _drive->tank(_controller.getAnalog(ControllerAnalog::leftY), _controller.getAnalog(ControllerAnalog::rightY));
 
         _intake.moveVoltage(_controller[CONTROLS.intake.in].isPressed() ? -12000
                                                                                : _controller[CONTROLS.intake.out].isPressed()
@@ -25,7 +25,11 @@
             _launcher.moveVoltage(_controller[launcher_cfg.button].isPressed() ? launcher_cfg.power : 0);
         }
 
-        _pneumatics.set_value(_controller[CONTROLS.pneumatics].isPressed());
+        if (_controller[CONTROLS.blooper].isPressed())
+            activate_blooper();
+
+        if (_controller[CONTROLS.string_launcher].isPressed())
+            activate_string_launcher();
 
         pros::delay(10);
     }

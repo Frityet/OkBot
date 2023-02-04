@@ -14,14 +14,15 @@ using namespace okapi::literals;
 
 static const constexpr struct {
     int8_t  left_motors[3], right_motors[3],
-            intake, launcher, vision, pneumatics;
+            intake, launcher, vision, blooper, string_launcher[2];
 } PORTS = {
     .left_motors = {-4, -2, -12 },
     .right_motors = {3, 5, 11  },
     .intake = -10,
     .launcher = -9,
     .vision = 14,
-    .pneumatics = 'A',
+    .blooper = 'A',
+    .string_launcher = { 'B', 'C' }
 };
 
 static const constexpr struct {
@@ -32,11 +33,11 @@ static const constexpr struct {
         ControllerDigital button;
         int16_t power;
     } launcher[3];
-    ControllerDigital pneumatics;
+    ControllerDigital blooper, string_launcher;
 } CONTROLS = {
     .intake = {
-        .in = ControllerDigital::R1,
-        .out = ControllerDigital::R2
+        .in = ControllerDigital::R2,
+        .out = ControllerDigital::R1
     },
     .launcher = {
         {
@@ -44,7 +45,8 @@ static const constexpr struct {
             .power = 12000
         },
     },
-    .pneumatics = ControllerDigital::A
+    .blooper = ControllerDigital::A,
+    .string_launcher = ControllerDigital::B
 };
 
 template<typename T>
@@ -58,5 +60,5 @@ using Range_t = Range<T>;
 static const constexpr struct {
     Range_t<int32_t> vision_epsilon;
 } SETTINGS = {
-    .vision_epsilon = { -50, 50 }
+    .vision_epsilon = { -75, 75 }
 };
