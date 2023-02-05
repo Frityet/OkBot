@@ -10,6 +10,9 @@
 
 #include "config.hpp"
 
+static std::pair<bool, bool *> toggle(bool *b)
+{ return std::make_pair(*b = !*b, b); }
+
 [[noreturn]] void Robot::operator_control()
 {
     while (true) {
@@ -22,7 +25,8 @@
 
         for (auto launcher_cfg : CONTROLS.launcher) {
             if (((int)launcher_cfg.button) == 0) continue;
-            _launcher.moveVoltage(_controller[launcher_cfg.button].isPressed() ? launcher_cfg.power : 0);
+            if (_controller[launcher_cfg.button].changed()) _flywheel_on = !_flywheel_on;
+            _launcher.moveVoltage(_flywheel_on ? launcher_cfg.power : 0);
         }
 
         if (_controller[CONTROLS.blooper].isPressed())

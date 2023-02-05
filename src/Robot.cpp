@@ -26,15 +26,15 @@ Robot::Robot():
     _launcher(PORTS.launcher),
     _blooper(PORTS.blooper),
     _string_launcher {
-        pros::ADIAnalogOut(PORTS.string_launcher[0]),
-        pros::ADIAnalogOut(PORTS.string_launcher[1])
+        pros::ADIDigitalOut(PORTS.string_launcher[0]),
+        pros::ADIDigitalOut(PORTS.string_launcher[1])
     },
-    _vision(PORTS.vision)
+    _flywheel_on(false)
 {
     _intake.setBrakeMode(AbstractMotor::brakeMode::coast);
     _launcher.setBrakeMode(AbstractMotor::brakeMode::coast);
 
-    _blooper.set_value(true);
+    _blooper.set_value(false);
     _string_launcher[0].set_value(false);
     _string_launcher[1].set_value(false);
 }
@@ -89,12 +89,13 @@ void Robot::turn(QAngle angle)
 void Robot::shoot(int16_t power)
 {
     stop_intake();
-    rev_intake(-power);
-    pros::delay(2_secs);
+    pros::delay(0.25_secs);
+    rev_intake(-power, 0.25_secs);
     stop_intake();
-}
-
-struct pros::vision_object Robot::get_biggest_object()
-{
-    return _vision.get_by_size(0);
+    pros::delay(0.25_secs);
+    rev_intake(-power, 0.25_secs);
+    stop_intake();
+    pros::delay(0.25_secs);
+    rev_intake(-power, 0.25_secs);
+    stop_intake();
 }

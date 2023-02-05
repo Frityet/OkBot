@@ -46,13 +46,11 @@ class Robot final {
             turn(QAngle angle),
             shoot(int16_t power = 12000);
 
-    struct pros::vision_object get_biggest_object();
-
     private:
         std::shared_ptr<class ChassisController>_chassis;
         std::shared_ptr<class ChassisModel>     _drive;
         class Controller                        _controller;
         class Motor                             _intake, _launcher;
-        class pros::ADIAnalogOut                _blooper, _string_launcher[2];
-        class pros::Vision                      _vision;
+        class pros::ADIDigitalOut               _blooper, _string_launcher[2];
+        bool                                    _flywheel_on;
 };
