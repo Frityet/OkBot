@@ -12,14 +12,18 @@ using namespace okapi::literals;
 
 /*<=>*/
 
+template<typename T>
+static T *offset(T *ptr, size_t offset)
+{ return reinterpret_cast<T *>(reinterpret_cast<uintptr_t>(ptr) + offset); }
+
 static const constexpr struct {
     int8_t  left_motors[3], right_motors[3],
             intake, launcher, vision, blooper, string_launcher[2];
 } PORTS = {
-    .left_motors = {-4, -2, -12 },
-    .right_motors = {3, 5, 11  },
+    .left_motors = { -4, -2, -12 },
+    .right_motors = { 3, 5, 11  },
     .intake = -10,
-    .launcher = -9,
+    .launcher = -7,
     .vision = 14,
     .blooper = 'A',
     .string_launcher = { 'B', 'C' }
@@ -44,6 +48,10 @@ static const constexpr struct {
             .button = ControllerDigital::L1,
             .power = 12000
         },
+        {
+            .button = ControllerDigital::L2,
+            .power = 10000
+        }
     },
     .blooper = ControllerDigital::A,
     .string_launcher = ControllerDigital::B

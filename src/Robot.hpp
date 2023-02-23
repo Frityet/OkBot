@@ -52,5 +52,4 @@ class Robot final {
         class Controller                        _controller;
         class Motor                             _intake, _launcher;
         class pros::ADIDigitalOut               _blooper, _string_launcher[2];
-        bool                                    _flywheel_on;
 };

@@ -1,17 +1,12 @@
 ///
 /// @author Amrit Bhogal on 2022-12-09
-/// @brief 
+/// @brief
 /// @version 1.0.0
 /// \brief
 
 #include "Robot.hpp"
 
-#include "Robot.hpp"
-
 #include "config.hpp"
-
-static std::pair<bool, bool *> toggle(bool *b)
-{ return std::make_pair(*b = !*b, b); }
 
 [[noreturn]] void Robot::operator_control()
 {
@@ -24,9 +19,14 @@ static std::pair<bool, bool *> toggle(bool *b)
                                                                                     : 0);
 
         for (auto launcher_cfg : CONTROLS.launcher) {
+            static int16_t voltage = 0;
             if (((int)launcher_cfg.button) == 0) continue;
-            if (_controller[launcher_cfg.button].changed()) _flywheel_on = !_flywheel_on;
-            _launcher.moveVoltage(_flywheel_on ? launcher_cfg.power : 0);
+
+            if (_controller[launcher_cfg.button].changed()) voltage = launcher_cfg.power;
+
+            _controller.setText(2, 0, "Voltage: " + std::to_string(voltage));
+
+            _launcher.moveVoltage(voltage);
         }
 
         if (_controller[CONTROLS.blooper].isPressed())

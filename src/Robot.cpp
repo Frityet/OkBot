@@ -28,8 +28,7 @@ Robot::Robot():
     _string_launcher {
         pros::ADIDigitalOut(PORTS.string_launcher[0]),
         pros::ADIDigitalOut(PORTS.string_launcher[1])
-    },
-    _flywheel_on(false)
+    }
 {
     _intake.setBrakeMode(AbstractMotor::brakeMode::coast);
     _launcher.setBrakeMode(AbstractMotor::brakeMode::coast);
@@ -47,7 +46,7 @@ void Robot::rev_launcher(int16_t power, Time_t duration)
 
 void Robot::rev_intake(int16_t power, Time_t duration)
 {
-    _intake.moveVoltage(-power);
+    _intake.moveVoltage(power);
     pros::delay(duration);
 }
 
