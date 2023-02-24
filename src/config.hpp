@@ -20,8 +20,8 @@ static const constexpr struct {
     int8_t  left_motors[3], right_motors[3],
             intake, launcher, vision, blooper, string_launcher[2];
 } PORTS = {
-    .left_motors = { -4, -2, -12 },
-    .right_motors = { 3, 5, 11  },
+    .left_motors = { 4, 2, 12 },
+    .right_motors = { -3, -5, -11  },
     .intake = -10,
     .launcher = -7,
     .vision = 14,
