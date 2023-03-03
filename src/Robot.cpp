@@ -16,7 +16,7 @@ Robot::Robot():
                     { PORTS.right_motors[0], PORTS.right_motors[1], PORTS.right_motors[2] }
                 )
                 .withDimensions(AbstractMotor::gearset::blue, {
-                    { 2.75_in, 14_in },
+                    { 2.75_in, 11.25_in },
                     imev5BlueTPR
                 })
                 .build()),
@@ -40,7 +40,7 @@ Robot::Robot():
 
 void Robot::rev_launcher(int16_t power, Time_t duration)
 {
-    _launcher.moveVoltage(power);
+    _launcher.moveVoltage(-power);
     pros::delay(duration);
 }
 
@@ -58,7 +58,6 @@ void Robot::reset_blooper()
 
 void Robot::activate_string_launcher()
 {
-
     _string_launcher[0].set_value(true);
     _string_launcher[1].set_value(true);
 }
@@ -89,12 +88,12 @@ void Robot::shoot(int16_t power)
 {
     stop_intake();
     pros::delay(0.25_secs);
-    rev_intake(-power, 0.25_secs);
+    rev_intake((int16_t)power, 0.25_secs);
     stop_intake();
     pros::delay(0.25_secs);
-    rev_intake(-power, 0.25_secs);
+    rev_intake((int16_t)power, 0.25_secs);
     stop_intake();
     pros::delay(0.25_secs);
-    rev_intake(-power, 0.25_secs);
+    rev_intake((int16_t)power, 0.25_secs);
     stop_intake();
 }

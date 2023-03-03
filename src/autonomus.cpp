@@ -51,7 +51,7 @@ public:
     auto operator *() const -> Either<T, ReadOnlyProperty<T>>
     { return Either(_value, *this); }
 };
-// 
+//
 template<typename TKey, typename TValue>
 struct KeyValuePair {
 public:
@@ -68,22 +68,32 @@ public:
 
 void Robot::autonomous()
 {
-    rev_launcher(12000, 2_secs);
-    rev_intake(12000, 0.125_secs);
+    std::puts("Started autonomous");
+    // drive(-5_cm, 0.2_secs);
+    // drive(5_cm, 0.2_secs);
 
-    _drive->left(-12000);
-    pros::delay(0.125_secs);
-    _drive->left(0);
-    //pros::delay(1_secs);
+    rev_launcher(12000, 0.5_secs);
+    rev_intake(12000, 0.25_secs);
+    drive(FIELD_SIZE / 3 - 40_cm, 150);
+    std::puts("Done driving");
+    turn(17_deg);
+	shoot(11000);
 
-    drive(20_cm, 150);
+    turn(-20_deg);
+    turn(-45_deg);
+    rev_intake(12000, 0.25_secs);
+    drive(1_m, 150);
 
-    turn(-8_deg);
+    turn(85_deg);
+	shoot(11500);
+    stop_launcher();
+    rev_intake(12000, 0_secs);
+    turn(-75_deg);
+    drive(-(FIELD_SIZE / 4) - 10_in - 0.5_m, 600);
+    pros::delay(0.5_secs);
+    stop_intake();
 
-    shoot(11000);
-
-    while(true) pros::delay(1000_secs);
-
+    while (true) pros::delay(100);
 }
 
 
