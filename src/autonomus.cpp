@@ -12,6 +12,8 @@
 
 static constexpr const auto FIELD_SIZE = 12_ft;
 
+struct loop { [[noreturn]] loop() { while (true) pros::delay(1000000000_secs) ; } };
+
 template<typename T1, typename T2>
 struct Either {
 public:
@@ -72,30 +74,50 @@ void Robot::autonomous()
     // drive(-5_cm, 0.2_secs);
     // drive(5_cm, 0.2_secs);
 
-    rev_launcher(12000, 0.5_secs);
-    rev_intake(12000, 0.25_secs);
-    drive(FIELD_SIZE / 3 - 40_cm, 150);
+    rev_launcher(-12000, 0);
+    rev_intake(12000, 0);
+    drive(FIELD_SIZE / 3 - 40_cm, 300);
     std::puts("Done driving");
     turn(17_deg);
 	shoot(11000);
 
-    turn(-20_deg);
-    turn(-45_deg);
-    rev_intake(12000, 0.25_secs);
-    drive(1_m, 150);
+    turn(-65_deg);
+    rev_intake(12000, 0);
+    drive(1_m, 600);
 
-    turn(85_deg);
+    turn(80_deg);
 	shoot(11500);
     stop_launcher();
     rev_intake(12000, 0_secs);
     turn(-75_deg);
-    drive(-(FIELD_SIZE / 4) - 10_in - 0.5_m, 600);
+    drive(-(FIELD_SIZE / 4) - 10_in, 600);
     pros::delay(0.5_secs);
     stop_intake();
 
-    while (true) pros::delay(100);
+    //Now we need to move back a bit by only moving the right side of the robot
+    _drive->right(-100);
+    pros::delay(0.5_secs);
+    _drive->right(0);
+    rev_intake(12000, 0.125_secs);
+    pros::delay(0.5_secs);
+    stop_intake();
+
+
+    loop {};
 }
 
+void Robot::autonomous_v2()
+{
+    //First, we need to hit the rollder to the right by only moving the left side of the robot
+    _drive->right(-100);
+    pros::delay(0.5_secs);
+    _drive->left(0);
+    rev_intake(12000, 0.125_secs);
+    pros::delay(0.5_secs);
+    stop_intake();
+
+    loop {};
+}
 
 extern "C" void autonomous()
-{ Robot::INSTANCE->autonomous(); }
+{ Robot::INSTANCE->autonomous_v2(); }

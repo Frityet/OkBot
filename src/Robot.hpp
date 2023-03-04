@@ -1,6 +1,6 @@
 ///
 /// @author Amrit Bhogal on 2023-01-31
-/// @brief 
+/// @brief
 /// @version 1.0.0
 ///
 #pragma once
@@ -34,7 +34,7 @@ class Robot final {
 
         Robot();
 
-    [[noreturn]] void operator_control(), autonomous(), roller_autonomous();
+    [[noreturn]] void operator_control(), autonomous(), roller_autonomous(), autonomous_v2();
 
     void    rev_launcher(int16_t power = 8000, Time_t duration = 4_secs),
             rev_intake(int16_t power = 12000, Time_t duration = 0.5_secs),

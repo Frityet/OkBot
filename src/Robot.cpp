@@ -19,6 +19,7 @@ Robot::Robot():
                     { 2.75_in, 11.25_in },
                     imev5BlueTPR
                 })
+
                 .build()),
     _drive(_chassis->getModel()),
     _controller(),
@@ -87,13 +88,12 @@ void Robot::turn(QAngle angle)
 void Robot::shoot(int16_t power)
 {
     stop_intake();
-    pros::delay(0.25_secs);
-    rev_intake((int16_t)power, 0.25_secs);
+    rev_intake((int16_t)-power, 0.25_secs);
     stop_intake();
     pros::delay(0.25_secs);
-    rev_intake((int16_t)power, 0.25_secs);
+    rev_intake((int16_t)-power, 0.25_secs);
     stop_intake();
     pros::delay(0.25_secs);
-    rev_intake((int16_t)power, 0.25_secs);
+    rev_intake((int16_t)-power, 0.25_secs);
     stop_intake();
 }
