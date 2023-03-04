@@ -8,12 +8,16 @@
 #include <memory>
 #include <optional>
 
+using Time_t = uint32_t;
+
+#define private public
+#   include <pros/adi.hpp>
+#undef private
+
 #include <okapi/api.hpp>
 
 using namespace okapi;
 using namespace okapi::literals;
-
-using Time_t = uint32_t;
 
 
 static constexpr int operator ""_secs(unsigned long long int secs)
@@ -38,7 +42,7 @@ class Robot final {
 
     void    rev_launcher(int16_t power = 8000, Time_t duration = 4_secs),
             rev_intake(int16_t power = 12000, Time_t duration = 0.5_secs),
-            activate_blooper(), activate_string_launcher();
+            toggle_blooper(), activate_string_launcher();
 
     void    stop_launcher(), stop_intake(), reset_blooper(), reset_string_launcher();
 

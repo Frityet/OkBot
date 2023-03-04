@@ -51,8 +51,8 @@ void Robot::rev_intake(int16_t power, Time_t duration)
     pros::delay(duration);
 }
 
-void Robot::activate_blooper()
-{ std::puts("B"); _blooper.set_value(true); }
+void Robot::toggle_blooper()
+{ _blooper.set_value(_blooper.get_value() ? false : true); }
 
 void Robot::reset_blooper()
 {  _blooper.set_value(false); }

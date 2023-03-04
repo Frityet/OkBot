@@ -14,9 +14,9 @@
         _drive->tank(_controller.getAnalog(ControllerAnalog::leftY), _controller.getAnalog(ControllerAnalog::rightY));
 
         _intake.moveVoltage(_controller[CONTROLS.intake.in].isPressed() ? -12000
-                                                                               : _controller[CONTROLS.intake.out].isPressed()
-                                                                                    ? 12000
-                                                                                    : 0);
+                                                                            : _controller[CONTROLS.intake.out].isPressed()
+                                                                        ? 12000
+                                                                            : 0);
 
         for (auto launcher_cfg : CONTROLS.launcher) {
             static int16_t voltage = 0;
@@ -30,7 +30,7 @@
         }
 
         if (_controller[CONTROLS.blooper].isPressed())
-            activate_blooper();
+            toggle_blooper();
 
         if (_controller[CONTROLS.string_launcher].isPressed())
             activate_string_launcher();

@@ -115,9 +115,10 @@ void Robot::autonomous_v2()
     pros::delay(0.5_secs);
     _drive->right(-30);
     pros::delay(0.5_secs);
-    _drive->right(-5);
+    _drive->right(-10);
     rev_intake(12000, 0);
-    pros::delay(0.2_secs);
+    pros::delay(0.5_secs);
+    _drive->right(0);
     stop_intake();    //rev_intake(12000, 1_secs);
 
     turn(10_deg), drive(26_cm, 300);
