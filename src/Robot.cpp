@@ -52,7 +52,7 @@ void Robot::rev_intake(int16_t power, Time_t duration)
 }
 
 void Robot::toggle_blooper()
-{ _blooper.set_value(_blooper.get_value() ? false : true); }
+{ _blooper.set_value(!_blooper.get_value()); }
 
 void Robot::reset_blooper()
 {  _blooper.set_value(false); }
@@ -85,15 +85,15 @@ void Robot::drive(QLength distance, double velocity)
 void Robot::turn(QAngle angle)
 { _chassis->turnAngle(angle); }
 
-void Robot::shoot(int16_t power)
+void Robot::shoot(int16_t power, Time_t duration)
 {
     stop_intake();
-    rev_intake((int16_t)-power, 0.25_secs);
+    rev_intake((int16_t)-power, duration);
     stop_intake();
-    pros::delay(0.25_secs);
-    rev_intake((int16_t)-power, 0.25_secs);
+    pros::delay(duration);
+    rev_intake((int16_t)-power, duration);
     stop_intake();
-    pros::delay(0.25_secs);
-    rev_intake((int16_t)-power, 0.25_secs);
+    pros::delay(duration);
+    rev_intake((int16_t)-power, duration);
     stop_intake();
 }

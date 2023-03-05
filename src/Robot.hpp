@@ -8,6 +8,7 @@
 #include <memory>
 #include <optional>
 
+
 using Time_t = uint32_t;
 
 #define private public
@@ -32,13 +33,15 @@ static constexpr int operator ""_mils(unsigned long long int ms)
 static constexpr int operator ""_mils(long double ms)
 { return ms; }
 
+static constexpr const auto FIELD_SIZE = 12_ft;
+
 class Robot final {
     public:
         static class Robot *const INSTANCE;
 
         Robot();
 
-    [[noreturn]] void operator_control(), autonomous(), roller_autonomous(), autonomous_v2();
+    [[noreturn]] void operator_control(), autonomous(), roller_autonomous(), autonomous_v2(), autonomous_skills();
 
     void    rev_launcher(int16_t power = 8000, Time_t duration = 4_secs),
             rev_intake(int16_t power = 12000, Time_t duration = 0.5_secs),
@@ -48,7 +51,7 @@ class Robot final {
 
     void    drive(QLength distance, double velocity = 600),
             turn(QAngle angle),
-            shoot(int16_t power = 12000);
+            shoot(int16_t power = 12000, Time_t duration = 0.25_secs);
 
     private:
         std::shared_ptr<class ChassisController>_chassis;

@@ -10,6 +10,7 @@
 
 [[noreturn]] void Robot::operator_control()
 {
+
     while (true) {
         _drive->tank(_controller.getAnalog(ControllerAnalog::leftY), _controller.getAnalog(ControllerAnalog::rightY));
 
@@ -29,10 +30,10 @@
             _launcher.moveVoltage(voltage);
         }
 
-        if (_controller[CONTROLS.blooper].isPressed())
+        if (_controller[CONTROLS.blooper].changedToPressed())
             toggle_blooper();
 
-        if (_controller[CONTROLS.string_launcher].isPressed())
+        if (_controller[CONTROLS.string_launcher].changedToPressed())
             activate_string_launcher();
 
         pros::delay(10);
