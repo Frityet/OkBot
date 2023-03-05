@@ -9,9 +9,6 @@
 #include <pros/motors.hpp>
 #include <lemlib/api.hpp>
 
-#define _FUNC(...) ~
-#define func(...) struct { __VA_ARGS__;
-
 //inches
 
 static constexpr auto operator ""_in(long double x)
