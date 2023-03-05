@@ -10,22 +10,23 @@
 class Robot *const Robot::INSTANCE = new class Robot();
 
 Robot::Robot():
-    _chassis(ChassisControllerBuilder()
+    _chassis (okapi::ChassisControllerBuilder()
                 .withMotors (
                     { PORTS.left_motors[0], PORTS.left_motors[1], PORTS.left_motors[2] },
                     { PORTS.right_motors[0], PORTS.right_motors[1], PORTS.right_motors[2] }
                 )
                 .withDimensions(AbstractMotor::gearset::blue, {
                     { 2.75_in, 11.25_in },
-                    imev5BlueTPR
+                     imev5BlueTPR
                 })
-
-                .build()),
+                .withOdometry()
+                .buildOdometry()),
     _drive(_chassis->getModel()),
     _controller(),
     _intake(PORTS.intake),
     _launcher(PORTS.launcher),
     _blooper(PORTS.blooper),
+    _imu(PORTS.imu),
     _string_launcher {
         pros::ADIDigitalOut(PORTS.string_launcher[0]),
         pros::ADIDigitalOut(PORTS.string_launcher[1])
@@ -73,7 +74,7 @@ void Robot::stop_launcher()
 { _launcher.moveVoltage(0); }
 
 void Robot::stop_intake()
-{ _intake.moveVoltage(0); pros::delay(1_secs); }
+{ _intake.moveVoltage(0), pros::delay(0.25_secs); }
 
 
 void Robot::drive(QLength distance, double velocity)
@@ -88,12 +89,20 @@ void Robot::turn(QAngle angle)
 void Robot::shoot(int16_t power, Time_t duration)
 {
     stop_intake();
-    rev_intake((int16_t)-power, duration);
-    stop_intake();
-    pros::delay(duration);
-    rev_intake((int16_t)-power, duration);
-    stop_intake();
-    pros::delay(duration);
-    rev_intake((int16_t)-power, duration);
-    stop_intake();
+
+    //Shoot all 3 at once
+    if (duration < 0.1) {
+        rev_launcher((int16_t)-power, 0.5_secs);
+        rev_intake(-12000, 0.5_secs);
+        pros::delay(1.25_secs);
+    } else {
+        rev_intake((int16_t)-power, duration);
+        stop_intake();
+        pros::delay(duration);
+        rev_intake((int16_t)-power, duration);
+        stop_intake();
+        pros::delay(duration);
+        rev_intake((int16_t)-power, duration);
+        stop_intake();
+    }
 }

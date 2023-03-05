@@ -52,7 +52,7 @@ void Robot::autonomous_v2()
     rev_launcher(-12000, 0);
     //First, we need to hit the rollder to the right by only moving the left side of the robot
     _drive->right(-80);
-    pros::delay(0.5_secs);
+    pros::delay(0.33_secs);
     _drive->right(-30);
     pros::delay(0.5_secs);
     _drive->right(-10);
@@ -84,4 +84,4 @@ void Robot::autonomous_v2()
 }
 
 extern "C" void autonomous()
-{ Robot::INSTANCE->autonomous_skills(); }
+{ Robot::INSTANCE->autonomous_v2(); }

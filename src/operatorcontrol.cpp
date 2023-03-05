@@ -10,7 +10,6 @@
 
 [[noreturn]] void Robot::operator_control()
 {
-
     while (true) {
         _drive->tank(_controller.getAnalog(ControllerAnalog::leftY), _controller.getAnalog(ControllerAnalog::rightY));
 

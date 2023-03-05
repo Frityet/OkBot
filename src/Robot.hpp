@@ -17,8 +17,11 @@ using Time_t = uint32_t;
 
 #include <okapi/api.hpp>
 
-using namespace okapi;
 using namespace okapi::literals;
+
+using okapi::QLength;
+using okapi::QSpeed;
+using okapi::QAngle;
 
 
 static constexpr int operator ""_secs(unsigned long long int secs)
@@ -54,9 +57,10 @@ class Robot final {
             shoot(int16_t power = 12000, Time_t duration = 0.25_secs);
 
     private:
-        std::shared_ptr<class ChassisController>_chassis;
-        std::shared_ptr<class ChassisModel>     _drive;
-        class Controller                        _controller;
-        class Motor                             _intake, _launcher;
-        class pros::ADIDigitalOut               _blooper, _string_launcher[2];
+        std::shared_ptr<class okapi::OdomChassisController> _chassis;
+        std::shared_ptr<class okapi::ChassisModel>          _drive;
+        class okapi::IMU                                    _imu;
+        class okapi::Controller                             _controller;
+        class okapi::Motor                                  _intake, _launcher;
+        class pros::ADIDigitalOut                           _blooper, _string_launcher[2];
 };
