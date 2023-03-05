@@ -253,7 +253,7 @@
 /*LED (dependencies: -)*/
 #define USE_LV_LED 1
 
-/*Message $ (dependencies: lv_rect, lv_btnm, lv_label)*/
+/*Message box (dependencies: lv_rect, lv_btnm, lv_label)*/
 #define USE_LV_MBOX 1
 
 /*Text area (dependencies: lv_label, lv_page)*/
@@ -295,7 +295,7 @@
 /*Keyboard (dependencies: lv_btnm)*/
 #define USE_LV_KB 1
 
-/*Check $ (dependencies: lv_btn, lv_label)*/
+/*Check box (dependencies: lv_btn, lv_label)*/
 #define USE_LV_CB 1
 
 /*List (dependencies: lv_page, lv_btn, lv_label, (lv_img optionally for icons

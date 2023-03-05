@@ -515,7 +515,7 @@
 #define USE_LV_LED      1
 #endif
 
-/*Message $ (dependencies: lv_rect, lv_btnm, lv_label)*/
+/*Message box (dependencies: lv_rect, lv_btnm, lv_label)*/
 #ifndef USE_LV_MBOX
 #define USE_LV_MBOX     1
 #endif
@@ -597,7 +597,7 @@
 #define USE_LV_KB       1
 #endif
 
-/*Check $ (dependencies: lv_btn, lv_label)*/
+/*Check box (dependencies: lv_btn, lv_label)*/
 #ifndef USE_LV_CB
 #define USE_LV_CB       1
 #endif

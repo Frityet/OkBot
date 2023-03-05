@@ -42,7 +42,7 @@ extern "C" {
  *      TYPEDEFS
  **********************/
 
-/*Data of check $*/
+/*Data of check box*/
 typedef struct
 {
     lv_btn_ext_t bg_btn; /*Ext. of ancestor*/
@@ -66,10 +66,10 @@ typedef uint8_t lv_cb_style_t;
  **********************/
 
 /**
- * Create a check $ objects
- * @param par pointer to an object, it will be the parent of the new check $
- * @param copy pointer to a check $ object, if not NULL then the new object will be copied from it
- * @return pointer to the created check $
+ * Create a check box objects
+ * @param par pointer to an object, it will be the parent of the new check box
+ * @param copy pointer to a check box object, if not NULL then the new object will be copied from it
+ * @return pointer to the created check box
  */
 lv_obj_t * lv_cb_create(lv_obj_t * par, const lv_obj_t * copy);
 
@@ -78,16 +78,16 @@ lv_obj_t * lv_cb_create(lv_obj_t * par, const lv_obj_t * copy);
  *====================*/
 
 /**
- * Set the text of a check $
- * @param cb pointer to a check $
- * @param txt the text of the check $
+ * Set the text of a check box
+ * @param cb pointer to a check box
+ * @param txt the text of the check box
  */
 void lv_cb_set_text(lv_obj_t * cb, const char * txt);
 
 /**
- * Set the state of the check $
- * @param cb pointer to a check $ object
- * @param checked true: make the check $ checked; false: make it unchecked
+ * Set the state of the check box
+ * @param cb pointer to a check box object
+ * @param checked true: make the check box checked; false: make it unchecked
  */
 static inline void lv_cb_set_checked(lv_obj_t * cb, bool checked)
 {
@@ -95,8 +95,8 @@ static inline void lv_cb_set_checked(lv_obj_t * cb, bool checked)
 }
 
 /**
- * Make the check $ inactive (disabled)
- * @param cb pointer to a check $ object
+ * Make the check box inactive (disabled)
+ * @param cb pointer to a check box object
  */
 static inline void lv_cb_set_inactive(lv_obj_t * cb)
 {
@@ -104,8 +104,8 @@ static inline void lv_cb_set_inactive(lv_obj_t * cb)
 }
 
 /**
- * Set a function to call when the check $ is clicked
- * @param cb pointer to a check $ object
+ * Set a function to call when the check box is clicked
+ * @param cb pointer to a check box object
  */
 static inline void lv_cb_set_action(lv_obj_t * cb, lv_action_t action)
 {
@@ -114,8 +114,8 @@ static inline void lv_cb_set_action(lv_obj_t * cb, lv_action_t action)
 
 
 /**
- * Set a style of a check $
- * @param cb pointer to check $ object
+ * Set a style of a check box
+ * @param cb pointer to check box object
  * @param type which style should be set
  * @param style pointer to a style
  *  */
@@ -126,15 +126,15 @@ void lv_cb_set_style(lv_obj_t * cb, lv_cb_style_t type, lv_style_t *style);
  *====================*/
 
 /**
- * Get the text of a check $
- * @param cb pointer to check $ object
- * @return pointer to the text of the check $
+ * Get the text of a check box
+ * @param cb pointer to check box object
+ * @return pointer to the text of the check box
  */
 const char * lv_cb_get_text(const lv_obj_t * cb);
 
 /**
- * Get the current state of the check $
- * @param cb pointer to a check $ object
+ * Get the current state of the check box
+ * @param cb pointer to a check box object
  * @return true: checked; false: not checked
  */
 static inline bool lv_cb_is_checked(const lv_obj_t * cb)
@@ -143,7 +143,7 @@ static inline bool lv_cb_is_checked(const lv_obj_t * cb)
 }
 
 /**
- * Get the action of a check $
+ * Get the action of a check box
  * @param cb pointer to a button object
  * @return pointer to the action function
  */
@@ -155,7 +155,7 @@ static inline lv_action_t lv_cb_get_action(const lv_obj_t * cb)
 
 /**
  * Get a style of a button
- * @param cb pointer to check $ object
+ * @param cb pointer to check box object
  * @param type which style should be get
  * @return style pointer to the style
  *  */

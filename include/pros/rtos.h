@@ -52,7 +52,7 @@ namespace pros {
 // The maximum number of characters allowed in a task's name.
 #define TASK_NAME_MAX_LEN 32
 
-// The maximum timeout value that can be given to, for INSTANCE, a mutex grab.
+// The maximum timeout value that can be given to, for instance, a mutex grab.
 #define TIMEOUT_MAX ((uint32_t)0xffffffffUL)
 
 typedef void* task_t;
